@@ -25,7 +25,7 @@ const Base = ({
           <h4>In case of any queries,please reach out to us!</h4>
           <button className="btn-warning btn-lg">Contact Us</button>
         </div>
-        <div className="container footer">
+        <div className="container footer" style={{ textAlign: "center" }}>
           <span className="text-muted text-center">
             Amazing <span className="text-white">Tshirts for the tech</span>{" "}
             savy
