@@ -8,9 +8,11 @@ body {
   background: #343a40;
 }
 footer {
-  font-size: 2px;
-  position: absolute;
-  bottom: 0px;
-  right: 0px;
-  left: 0px;
+  position: relative;
+  height: 1em;
+  margin-top: -200px;
+  width: 100%;
+  font-size: small;
+  bottom: 0;
+  left: 0;
 }
