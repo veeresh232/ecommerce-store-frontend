@@ -1,38 +1,39 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react'
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { isAuthenticated } from '../auth/helper';
-import Base from '../core/Base';
-import { deleteProduct, getAllProducts } from './helper/adminapicall';
+import Base from '../core/Base'
+import { deleteCategory, getAllCategories } from './helper/adminapicall';
 
-const ManageProducts = () => {
-
-    const [products, setProducts] = useState({productss:[],error:''});
+const ManageCategories =()=> {
 
     const {user,token} = isAuthenticated();
-    const {productss,error} = products;
+    const [state, setstate] = useState({categories:[]});
+    let {categories} = state;
     const preLoad = ()=>{
-        getAllProducts().then(data =>{
+        getAllCategories().then(data =>{
             if(data.error){
-                setProducts({...products,error:data.error});
+                console.log(data.error);
             }else{
-                setProducts({...products,productss:data});
+                setstate({categories:data})
             }
         })
     }
+    useEffect(() => {
+        preLoad();
+    }, []);
 
-    const deleteAProduct = (productId)=>{
-        deleteProduct(productId,user._id,token).then(data=>{
+    const deleteACategory = id =>{
+        deleteCategory(id,user._id,token).then(data=>{
             if(data.error){
-                setProducts({...products,error:data.error})
+                console.log(data.error);
             }else{
                 preLoad();
             }
         })
     }
 
-    useEffect(()=>{
-        preLoad();
-    },[]);
+
     return (
         <Base title="Welcome admin" description="Manage products here">
         <h2 className="mb-4">All products:</h2>
@@ -41,8 +42,8 @@ const ManageProducts = () => {
         </Link>
         <div className="row">
           <div className="col-12">
-            <h2 className="text-center text-white my-3">Total {productss.length} products</h2>
-            {productss.map((item,index) =>{
+            <h2 className="text-center text-white my-3">Total {categories.length} Categories</h2>
+            {categories.map((item,index) =>{
                 return (
                     <div key ={index} className="row text-center mb-2 ">
               <div className="col-4">
@@ -51,13 +52,13 @@ const ManageProducts = () => {
               <div className="col-4">
                 <Link
                   className="btn btn-success"
-                  to={`/admin/product/update/${item._id}`}
+                  to={`/admin/category/update/${item._id}`}
                 >
                   <span className="">Update</span>
                 </Link>
               </div>
               <div className="col-4">
-                <button onClick={() => {deleteAProduct(item._id)}} className="btn btn-danger">
+                <button onClick={() => {deleteACategory(item._id)}} className="btn btn-danger">
                   Delete
                 </button>
               </div>
@@ -70,5 +71,4 @@ const ManageProducts = () => {
       </Base>
     );
 }
-
-export default ManageProducts;
+export default ManageCategories;

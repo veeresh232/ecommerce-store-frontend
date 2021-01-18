@@ -17,6 +17,8 @@ const Base = ({
         </div>
         <div className={className}>{children} </div>
       </div>
+      <br></br> <br />
+      <hr></hr>
       <footer
         className="footer bg-dark mt-auto py-3"
         // style={{ position: "absolute", bottom: "0px" }}
