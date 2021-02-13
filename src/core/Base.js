@@ -4,7 +4,7 @@ import Menu from "./Menu";
 const Base = ({
   title = "My Title",
   descrption = "My description",
-  className = "bg-dark text-white p-4",
+  className = "bg-dark text-white",
   children,
 }) => {
   return (
@@ -17,7 +17,7 @@ const Base = ({
         </div>
         <div className={className}>{children} </div>
       </div>
-      <br></br> <br />
+      {/* <br/> */}
       <hr></hr>
       <footer
         className="footer bg-dark mt-auto py-3"

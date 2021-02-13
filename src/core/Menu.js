@@ -22,11 +22,12 @@ const Menu = ({ history }) => {
           <Link
             style={currentTab(history, "/cart")}
             className="nav-link"
-            to="/cart"
+            to="/user/cart"
           >
             Cart
           </Link>
         </li>
+        
         <li className="nav-item">
           {isAuthenticated() && isAuthenticated().user.role ===0 && (
             <Link
@@ -86,6 +87,24 @@ const Menu = ({ history }) => {
               </span>
             </li>
           )}
+        </li>
+        <li className="nav-item">
+          <Link
+            style={currentTab(history, "/about")}
+            className="nav-link"
+            to="/about"
+          >
+            Dev info
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link
+            style={currentTab(history, "/donate")}
+            className="nav-link"
+            to="/donate"
+          >
+            Donate
+          </Link>
         </li>
       </ul>
     </div>

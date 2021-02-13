@@ -13,6 +13,9 @@ import AddProduct from "./admin/AddProduct";
 import ManageProducts from "./admin/ManageProducts";
 import UpdateProduct from "./admin/UpdateProduct";
 import UpdateCategory from "./admin/UpdateCategory";
+import Cart from "./core/Cart";
+import DevInfo from "./common/DevInfo";
+import Donate from "./common/Donate";
 
 export default function Routes() {
   return (
@@ -30,6 +33,9 @@ export default function Routes() {
           <AdminRoute path='/admin/products' component={ManageProducts} />
           <AdminRoute path='/admin/product/update/:productId' component={UpdateProduct} />
           <AdminRoute path='/admin/category/update/:categoryId' component={UpdateCategory} />
+          <Route path="/user/cart" component={Cart} />
+          <Route path="/about" component={DevInfo} />
+          <Route path='/donate' component={Donate}/>
         </Switch>
       </BrowserRouter>
     </div>
